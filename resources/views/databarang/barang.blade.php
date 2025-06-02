@@ -51,7 +51,7 @@
                             <tbody>
                                 @foreach ($barangs as $index => $barang)
                                     <tr>
-                                        <td>{{ $barang->kodebarang }}<d>
+                                        <td>{{ $barang->kodebarang }}</td>
                                         <td>{{ optional($barang->kategori)->namakategori ?? 'Kategori tidak ditemukan' }}</td>
                                         <td>{{ $barang->namabarang }}</td>
                                         <td>{{ $barang->satuan }}</td>
@@ -135,8 +135,8 @@
                                 <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
                             </div>
                             <div class="modal-body">
-                                <label for="kategorinya">Nama Kategori</label>
-                                <select name="kodekategori" id="kodekategori" class="form-control">
+                                <label for="kodekategori">Nama Kategori</label>
+                                <select name="kodekategori" id="kodekategori" class="form-control select2">
                                     <option value="">--pilih kategori--</option>
                                     @foreach ($kategoris as $kat)
                                         <option value="{{ $kat->kodekategori }}">{{ $kat->namakategori }}</option>
@@ -162,12 +162,23 @@
                     </div>
                 </div>
             </div>
+
+        <!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Bootstrap Bundle JS (sudah termasuk Popper.js) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Select2 -->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+
             <script>
                 document.addEventListener('DOMContentLoaded', function () {
                     const kategoriSelect = document.querySelector('select[name="kodekategori"]');
                     const kodeBarangInput = document.querySelector('input[name="kodebarang"]');
 
-                    kategoriSelect.addEventListener('change', function () {
+                    $('#kodekategori').on('change', function () {
                         const kodekategori = this.value;
                         if (kodekategori) {
                             fetch(`/get-kodebarang/${kodekategori}`)
@@ -197,6 +208,20 @@
                     });
                 </script>
             @endif
+            <script>
+    $(document).ready(function () {
+        // Trigger Select2 ketika modal terbuka
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#kodekategori').select2({
+                dropdownParent: $('#myModal'), // wajib agar Select2 tidak tertutup modal
+                placeholder: "--pilih kode barang--",
+                allowClear: true,
+                width: '100%'
+            });
+        });
+    });
+</script>
+
 
 
 @endsection

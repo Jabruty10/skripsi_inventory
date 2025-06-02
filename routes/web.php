@@ -26,7 +26,7 @@ Route::get('databarang/kategori', [KategoriController::class, 'index'])->name('d
 Route::post('databarang/kategori', [KategoriController::class, 'store'])->name('databarang.kategori.store');
 Route::put('databarang/kategori/{kodekategori}', [KategoriController::class, 'update'])->name('databarang.kategori.update');
 Route::delete('databarang/kategori/{kodekategori}', [KategoriController::class, 'destroy'])->name('databarang.kategori.destroy');
-Route::get('/get-kodebarang/{kodekategori}', [App\Http\Controllers\Databarang\BarangController::class, 'getKodeBarang']);
+Route::get('/get-kodekategori/{kodekategori}', [KategoriController::class, 'getKodeKategori']);
 
 Route::get('databarang/barang', [BarangController::class, 'index'])->name('databarang.barang.index');
 Route::post('databarang/barang', [BarangController::class, 'store'])->name('databarang.barang.store');

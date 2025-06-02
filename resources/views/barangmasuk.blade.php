@@ -99,7 +99,7 @@
                 </div>
                 <div class="modal-body">
                     <label for="suppliernya">Nama Supplier</label>
-                    <select name="idsupplier" class="form-control" required>
+                    <select name="idsupplier" id="supplier" class="form-control select2" required>
                         <option value="">--pilih supplier--</option>
                         @foreach($suppliers as $supplier)
                             <option value="{{ $supplier->idsupplier }}">{{ $supplier->namasupplier }}</option>
@@ -140,6 +140,12 @@
     $(document).ready(function () {
         // Trigger Select2 ketika modal terbuka
         $('#modalTambah').on('shown.bs.modal', function () {
+        $('#supplier').select2({
+    dropdownParent: $('#modalTambah'),
+    placeholder: "--pilih supplier--",
+    allowClear: true,
+    width: '100%'
+});
             $('#kodebarang').select2({
                 dropdownParent: $('#modalTambah'), // wajib agar Select2 tidak tertutup modal
                 placeholder: "--pilih kode barang--",

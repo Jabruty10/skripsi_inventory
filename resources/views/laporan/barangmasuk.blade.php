@@ -13,15 +13,31 @@
                 Cetak PDF
             </a>
 
-            <form action="{{ route('laporan.barangmasuk.index') }}" method="GET" class="mb-4">
-                <label>Dari Tanggal:</label>
-                <input type="date" name="start_date" value="{{ request('start_date') }}" required>
+            <form action="{{ route('laporan.barangmasuk.index') }}" method="GET" class="mb-4 row g-2 align-items-end">
+    <div class="col-auto">
+        <label>Dari Tanggal:</label>
+        <input type="date" name="start_date" class="form-control" value="{{ request('start_date') }}" required>
+    </div>
 
-                <label>Sampai Tanggal:</label>
-                <input type="date" name="end_date" value="{{ request('end_date') }}" required>
+    <div class="col-auto">
+        <label>Sampai Tanggal:</label>
+        <input type="date" name="end_date" class="form-control" value="{{ request('end_date') }}" required>
+    </div>
 
-                <button type="submit">Filter</button>
-            </form>
+    <div class="col-auto">
+        <label>Nama Barang:</label>
+        <input type="text" name="nama_barang" class="form-control" placeholder="Cari barang..." value="{{ request('nama_barang') }}">
+    </div>
+
+    <div class="col-auto">
+        <label>Supplier:</label>
+        <input type="text" name="supplier" class="form-control" placeholder="Cari supplier..." value="{{ request('supplier') }}">
+    </div>
+
+    <div class="col-auto">
+        <button type="submit" class="btn btn-secondary">Filter</button>
+    </div>
+</form>
 
             <table class="table table-bordered table-striped">
                 <thead>
@@ -32,7 +48,7 @@
                         <th>SATUAN</th>
                         <th>DESKRIPSI</th>
                         <th>HARGA BELI</th>
-                        <th>HARGA JUAl</th>
+                        <th>HARGA JUAL</th>
                         <th>TGL MASUK</th>
                         <th>JUMLAH</th>
                         <th>LABA</th>

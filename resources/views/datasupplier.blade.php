@@ -51,7 +51,7 @@
                                 Edit
                             </button>
                             <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete{{ $supplier->idsupplier }}">
-                                Delete
+                                Hapus
                             </button>
                         </td>
                     </tr>
@@ -126,7 +126,7 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                     </div>
                                     <div class="modal-body">
-                                        Apakah anda yakin ingin menghapus {{ $supplier->namasupplier }}?
+                                        Apakah anda yakin ingin menghapus <strong>{{ $supplier->namasupplier }}</strong>?
                                     </div>
                                     <div class="modal-footer">
                                         <button type="submit" class="btn btn-danger">Submit</button>

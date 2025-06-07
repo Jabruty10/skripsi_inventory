@@ -50,7 +50,7 @@
                         <td>{{ $data->qty }}</td>
                         <td>
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete{{ $data->idbarangmasuk }}">
-                                Delete
+                                Hapus
                             </button>
                         </td>
                     </tr>
@@ -68,7 +68,7 @@
                                     </div>
                                     <div class="modal-body">
                                         @if ($data->barang)
-                                            Apakah anda yakin ingin menghapus {{ $data->namabarang }}?
+                                            Apakah anda yakin ingin menghapus <strong>{{ $data->namabarang }}</strong>?
                                         @else
                                             Barang tidak ditemukan
                                         @endif

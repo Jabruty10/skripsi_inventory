@@ -77,6 +77,20 @@
         a {
             text-decoration: none;
         }
+        .form-group {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    user-select: none;
+    font-size: 18px;
+}
+
     </style>
 </head>
 <body>
@@ -87,12 +101,29 @@
             <div class="form-group">
                 <input type="text" name="username" placeholder="Username" required>
             </div>
-            <div class="form-group">
-                <input type="password" name="password" placeholder="Password" required>
-            </div>
+           <div class="form-group">
+    <input type="password" id="password" name="password" placeholder="Password" required>
+    <span class="toggle-password" onclick="togglePassword()">👁️</span>
+</div>
+
             <button type="submit">Masuk</button>
             <div class="form-group"><p>Belum punya akun? <a href="/register">Daftar</a></p></div>
         </form>
     </div>
+    <script>
+function togglePassword() {
+    const passwordInput = document.getElementById("password");
+    const icon = document.querySelector(".toggle-password");
+
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        icon.textContent = "🙈";
+    } else {
+        passwordInput.type = "password";
+        icon.textContent = "👁️";
+    }
+}
+</script>
+
 </body>
 </html>

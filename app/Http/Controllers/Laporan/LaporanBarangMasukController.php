@@ -9,18 +9,31 @@ use App\Models\Barangmasuk;
 
 class LaporanBarangMasukController extends Controller
 {
-    public function index(Request $request)
-    {
-    $query = Barangmasuk::with('barang');
+   public function index(Request $request)
+{
+    $query = BarangMasuk::with(['barang', 'supplier']);
 
-    if ($request->filled('start_date') && $request->filled('end_date')) {
+    if ($request->start_date && $request->end_date) {
         $query->whereBetween('tglmasuk', [$request->start_date, $request->end_date]);
     }
 
-    $barangMasuk = $query->get();
+    if ($request->nama_barang) {
+        $query->whereHas('barang', function ($q) use ($request) {
+            $q->where('namabarang', 'like', '%' . $request->nama_barang . '%');
+        });
+    }
+
+    if ($request->supplier) {
+        $query->whereHas('supplier', function ($q) use ($request) {
+            $q->where('namasupplier', 'like', '%' . $request->supplier . '%');
+        });
+    }
+
+    $barangMasuk = $query->orderBy('tglmasuk', 'desc')->get();
 
     return view('laporan.barangmasuk', compact('barangMasuk'));
-    }
+}
+
 
     public function cetakPDF(Request $request)
 {

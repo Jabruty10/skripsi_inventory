@@ -10,34 +10,22 @@
     <div class="card">
         <div class="card-body">
             <a href="{{ route('laporan.barangmasuk.pdf', ['start_date' => request('start_date'), 'end_date' => request('end_date')]) }}" target="_blank" class="btn btn-primary mb-3">
-                Cetak PDF
+                Download PDF
             </a>
 
             <form action="{{ route('laporan.barangmasuk.index') }}" method="GET" class="mb-4 row g-2 align-items-end">
-    <div class="col-auto">
-        <label>Dari Tanggal:</label>
-        <input type="date" name="start_date" class="form-control" value="{{ request('start_date') }}" required>
-    </div>
-
-    <div class="col-auto">
-        <label>Sampai Tanggal:</label>
-        <input type="date" name="end_date" class="form-control" value="{{ request('end_date') }}" required>
-    </div>
-
-    <div class="col-auto">
-        <label>Nama Barang:</label>
-        <input type="text" name="nama_barang" class="form-control" placeholder="Cari barang..." value="{{ request('nama_barang') }}">
-    </div>
-
-    <div class="col-auto">
-        <label>Supplier:</label>
-        <input type="text" name="supplier" class="form-control" placeholder="Cari supplier..." value="{{ request('supplier') }}">
-    </div>
-
-    <div class="col-auto">
-        <button type="submit" class="btn btn-secondary">Filter</button>
-    </div>
-</form>
+                <div class="col-md-3">
+                    <label for="start_date" class="form-label">Dari Tanggal:</label>
+                    <input type="date" name="start_date" class="form-control" value="{{ request('start_date') }}" required>
+                </div>
+                <div class="col-md-3">
+                    <label for="end_date" class="form-label">Sampai Tanggal:</label>
+                    <input type="date" name="end_date" class="form-control" value="{{ request('end_date') }}" required>
+                </div>
+                <div class="col-md-3">
+                    <button type="submit" class="btn btn-success">Filter</button>
+                </div>
+            </form>
 
             <table class="table table-bordered table-striped">
                 <thead>

@@ -11,7 +11,7 @@
     <div class="card mb-4">
         <div class="card-header">
             <a href="{{ route('laporan.barang.pdf') }}" target="_blank" class="btn btn-primary">
-                Cetak PDF
+                Download PDF
             </a>
         </div>
         <div class="card-body">

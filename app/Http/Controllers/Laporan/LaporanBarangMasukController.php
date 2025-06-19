@@ -31,7 +31,7 @@ class LaporanBarangMasukController extends Controller
 
     $barangMasuk = $query->orderBy('tglmasuk', 'desc')->get();
 
-    return view('laporan.barangmasuk.index', compact('barangMasuk'));
+    return view('laporan.barangmasuk', compact('barangMasuk'));
 }
 
 

@@ -5,7 +5,7 @@
 @section('content')
 <div class="container-fluid px-4">
     <p class="breadcrumb-custom">
-        <span class="fs-4"><a>Barang Keluar</a></span>
+          <span class="fs-4 fw-bold">Barang Keluar</span>
     </p>
 
     <!-- ======================= FORM INPUT ======================= -->

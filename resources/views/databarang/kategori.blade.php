@@ -5,8 +5,8 @@
 @section('content')
 <div class="container-fluid px-4">
     <p class="breadcrumb-custom">
-        <span class="fs-4"><a>Data Barang</a></span>
-        <span class="fs-4">Kategori</span>
+        <span class="fs-4 fw-bold"><a>Data Barang</a></span>
+        <span class="fs-4 fw-bold">Kategori</span>
     </p>
     <div class="card mb-4">
         <div class="card-header">

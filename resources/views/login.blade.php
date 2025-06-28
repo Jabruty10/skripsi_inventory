@@ -17,14 +17,14 @@
         }
 
         body::before {
-        content: '';
-        position: absolute;
-        top: 0; left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.7);
-        z-index: 1;
-    }
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1;
+        }
 
         .login-container {
             background: #ffffff;
@@ -51,6 +51,13 @@
             border-radius: 6px;
         }
 
+        .error-message {
+            color: red;
+            font-size: 13px;
+            margin-top: -8px;
+            margin-bottom: 8px;
+        }
+
         button {
             width: 100%;
             padding: 12px;
@@ -68,62 +75,83 @@
 
         .form-group {
             margin-bottom: 15px;
+            position: relative;
         }
 
         p {
             color: black;
             text-align: center;
         }
+
         a {
             text-decoration: none;
         }
-        .form-group {
-    position: relative;
-}
 
-.toggle-password {
-    position: absolute;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    user-select: none;
-    font-size: 18px;
-}
-
+        .toggle-password {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            user-select: none;
+            font-size: 18px;
+        }
     </style>
 </head>
 <body>
     <div class="login-container">
         <h2>Login</h2>
+
+        @if(session('success'))
+            <div class="alert alert-success" style="text-align:center; margin-bottom: 10px;">
+                 {{ session('success') }}
+             </div>
+        @endif
+
+        {{-- Tampilkan pesan error umum dari sesi --}}
+        @if(session('error'))
+            <div class="error-message" style="text-align: center;">{{ session('error') }}</div>
+        @endif
+
         <form method="POST" action="{{ route('login') }}">
             @csrf
+
             <div class="form-group">
-                <input type="text" name="username" placeholder="Username" required>
+                <input type="text" name="username" placeholder="Username" value="{{ old('username') }}" required>
+                @error('username')
+                    <div class="error-message">{{ $message }}</div>
+                @enderror
             </div>
-           <div class="form-group">
-    <input type="password" id="password" name="password" placeholder="Password" required>
-    <span class="toggle-password" onclick="togglePassword()">👁️</span>
-</div>
+
+            <div class="form-group">
+                <input type="password" id="password" name="password" placeholder="Password" required>
+                <span class="toggle-password" onclick="togglePassword()">👁️</span>
+                @error('password')
+                    <div class="error-message">{{ $message }}</div>
+                @enderror
+            </div>
 
             <button type="submit">Masuk</button>
-            <div class="form-group"><p>Belum punya akun? <a href="/register">Daftar</a></p></div>
+
+            <div class="form-group">
+                <p>Belum punya akun? <a href="/register">Daftar</a></p>
+            </div>
         </form>
     </div>
+
     <script>
-function togglePassword() {
-    const passwordInput = document.getElementById("password");
-    const icon = document.querySelector(".toggle-password");
+        function togglePassword() {
+            const passwordInput = document.getElementById("password");
+            const icon = document.querySelector(".toggle-password");
 
-    if (passwordInput.type === "password") {
-        passwordInput.type = "text";
-        icon.textContent = "🙈";
-    } else {
-        passwordInput.type = "password";
-        icon.textContent = "👁️";
-    }
-}
-</script>
-
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                icon.textContent = "🙈";
+            } else {
+                passwordInput.type = "password";
+                icon.textContent = "👁️";
+            }
+        }
+    </script>
 </body>
 </html>

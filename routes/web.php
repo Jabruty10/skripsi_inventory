@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ManualBookController;
 use App\Http\Controllers\Databarang\KategoriController;
 use App\Http\Controllers\Databarang\BarangController;
 use App\Http\Controllers\SupplierController;
@@ -13,14 +14,15 @@ use App\Http\Controllers\Laporan\LaporanBarangController;
 use App\Http\Controllers\Laporan\LaporanBarangMasukController;
 use App\Http\Controllers\Laporan\LaporanBarangKeluarController;
 
-Route::get('/', [DashboardController::class, 'index'])->name('index');
-
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/register', [AuthController::class, 'showRegister']);
 Route::post('/register', [AuthController::class, 'register']);
+
+Route::get('/', [DashboardController::class, 'index'])->name('index');
+Route::get('/manualbook', [ManualBookController::class, 'index'])->name('manual.book');
 
 Route::get('databarang/kategori', [KategoriController::class, 'index'])->name('databarang.kategori.index');
 Route::post('databarang/kategori', [KategoriController::class, 'store'])->name('databarang.kategori.store');

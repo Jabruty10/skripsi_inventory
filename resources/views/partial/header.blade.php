@@ -8,7 +8,6 @@
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-user fa-fw"></i></a>
             <ul class="dropdown-menu dropdown-menu-end">
                 <li><p class="dropdown-item">{{ session('user.username') }}</p></li>
-                <li><a class="dropdown-item" href="/login">Logout</a></li>
             </ul>
         </li>
     </ul>

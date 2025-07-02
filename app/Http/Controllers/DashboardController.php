@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Databarang;
 use App\Models\Barangmasuk;
-use App\Models\BarangKeluar;
+use App\Models\Barangkeluar;
 use App\Models\Datapembeli;
 
 class DashboardController extends Controller
